@@ -4905,7 +4905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Model>k__BackingField:
     rid: -2
-  _startHealth: 5
+  _startHealth: 3
   _damage: 1
   _characterSide: 0
   references:

@@ -54,8 +54,11 @@ namespace Sources.Runtime
                 _activeCharacter.Model.Deactivated -= NextTurn;
             
             _activeCharacter = _round.GetNextTurn();
-            if(_activeCharacter == null)
+            if (_activeCharacter == null)
+            {
                 RandomizeBattleTurns();
+                _activeCharacter = _round.GetNextTurn();
+            }
 
             _activeCharacter.Model.Deactivated += NextTurn;
             
