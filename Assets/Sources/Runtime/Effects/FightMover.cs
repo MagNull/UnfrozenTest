@@ -27,18 +27,22 @@ public class FightMover : MonoBehaviour
         var attackerPresenter = _bank.GetPresenterByModel(attacker);
         var targetPresenter = _bank.GetPresenterByModel(target);
 
+        attackerPresenter.transform.DOComplete();
+        targetPresenter.transform.DOComplete();
         var attackerOriginPos = attackerPresenter.transform.position;
         var targetOriginPos = targetPresenter.transform.position;
-
-        attackerPresenter.transform.DOMove(attacker is Ally ? _allyPosition.position : _enemyPosition.position, _moveDuration);
+        
+        attackerPresenter.transform.DOMove(attacker is Ally ? _allyPosition.position : _enemyPosition.position, 
+            _moveDuration);
         targetPresenter.transform.DOMove(target is Enemy ? _enemyPosition.position : _allyPosition.position,
             _moveDuration);
-        
 
         attackerPresenter.Model.Attacked += () =>
         {
-            attackerPresenter.transform.position = attackerOriginPos;
-            targetPresenter.transform.position = targetOriginPos;
+            attackerPresenter.transform.DOKill();
+            targetPresenter.transform.DOKill();
+            attackerPresenter.transform.DOMove(attackerOriginPos, _moveDuration / 2);
+            targetPresenter.transform.DOMove(targetOriginPos, _moveDuration / 2);
         };
     }
 }

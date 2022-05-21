@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Sources.Runtime
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class AttackBlackout : MonoBehaviour
+    public class CombatBlackout : MonoBehaviour
     {
         private CharacterPresentersBank _bank;
         private SpriteRenderer _spriteRenderer;

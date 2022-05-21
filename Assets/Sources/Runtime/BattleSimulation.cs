@@ -10,7 +10,7 @@ namespace Sources.Runtime
     {
         [SerializeField]
         private List<CharacterPresenter> _characters = new();
-        private AttackBlackout _attackBlackout;
+        private CombatBlackout _combatBlackout;
         private CharacterPresenter _activeCharacter;
         private Round _round;
 
